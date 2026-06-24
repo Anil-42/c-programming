@@ -24,8 +24,9 @@ char* strnconcatenate(char *s1,char *s2,int n){
 }
 
 int main(){
-    char s1[501]="Hello ";
-    char *s2="world";
+    char s1[501];
+    char *s2=" world";
+    scanf("%s",s1);
     // printf("%s\n",strcat(s1,s2));
     // printf("%s\n",strncat(s1,s2,2));
 
