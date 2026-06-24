@@ -1,0 +1,37 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+int compare(const void *a, const void *b){
+    int val_a = *(const int *)a;
+    int val_b = *(const int *)b;
+
+    return (val_a>val_b) - (val_a<val_b);
+}
+
+int solve(int *arr, int n){
+    qsort(arr,n,sizeof(int),compare);
+    for(int i=0;i<n-1;i++){
+        if(arr[i]>0){
+            if(arr[i+1]-arr[i] != 1){
+                return arr[i+1];
+            }
+        }
+    }
+    return arr[n-1]+1; 
+
+}
+
+int main(){
+    int n;
+    scanf("%d",&n);
+    int *arr = (int *)calloc(n,sizeof(int));
+    for(int i=0;i<n;i++){
+        scanf("%d",arr[i]);
+    }
+    
+    printf("%d",solve(arr,n));
+
+    free(arr);
+
+    return 0;
+}
