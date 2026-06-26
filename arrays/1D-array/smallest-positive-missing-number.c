@@ -10,15 +10,14 @@ int compare(const void *a, const void *b){
 
 int solve(int *arr, int n){
     qsort(arr,n,sizeof(int),compare);
-    for(int i=0;i<n-1;i++){
-        if(arr[i]>0){
-            if(arr[i+1]-arr[i] != 1){
-                return arr[i+1];
-            }
-        }
-    }
-    return arr[n-1]+1; 
-
+    int target=1;
+    for(int i=0;i<n;i++){
+        if(arr[i]>0 && arr[i]==arr[i-1])
+        continue;
+        if(arr[i]==target)
+        target++;
+     }
+     return target;
 }
 
 int main(){
@@ -26,7 +25,7 @@ int main(){
     scanf("%d",&n);
     int *arr = (int *)calloc(n,sizeof(int));
     for(int i=0;i<n;i++){
-        scanf("%d",arr[i]);
+        scanf("%d",&arr[i]);
     }
     
     printf("%d",solve(arr,n));
